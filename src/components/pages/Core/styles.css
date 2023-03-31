@@ -1,0 +1,43 @@
+.layout {
+  text-align: center;
+  background-image: linear-gradient(#FF2400, grey);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.back-btn {
+  background: none;
+	border: none;
+	padding: 2em;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  color: white;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+.top-bar{
+  flex: 1;
+}
+
+.container{
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 10px;
+  width: 90%;
+  flex: 10;
+}
+
+.bottom-bar{
+  flex: 0.6;
+}
