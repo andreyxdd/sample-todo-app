@@ -12,7 +12,6 @@
 .back-btn {
   background: none;
 	border: none;
-	padding: 2em;
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
@@ -21,13 +20,15 @@
   line-height: 20px;
   list-style: none;
   color: white;
-  position:absolute;
-  top:0;
-  left:0;
+  position: absolute;
+  left: 0;
 }
 
 .top-bar{
-  flex: 1;
+  flex: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .container{
@@ -39,5 +40,5 @@
 }
 
 .bottom-bar{
-  flex: 0.6;
+  flex: 0.7;
 }

@@ -26,7 +26,7 @@ function WelcomePage() {
             Continue to the app
           </Button>
           <a href="https://github.com/andreyxdd" target="_blank" rel="noopener noreferrer">
-            <Button onClick={() => console.log('!!')}>
+            <Button>
               <span>See source code</span>
               <FaGithub
                 size="1.5em"

@@ -3,7 +3,7 @@ import './styles.css';
 
 type Props = {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 function Button({ children, onClick }: Props) {
@@ -13,5 +13,10 @@ function Button({ children, onClick }: Props) {
     </button>
   );
 }
+
+Button.defaultProps = {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onClick: () => { },
+};
 
 export default Button;

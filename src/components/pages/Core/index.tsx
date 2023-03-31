@@ -18,6 +18,7 @@ function WelcomePage() {
             style={{
               verticalAlign: 'middle',
               marginRight: '0.3em',
+              marginLeft: '0.6em',
             }}
             color="white"
           />
