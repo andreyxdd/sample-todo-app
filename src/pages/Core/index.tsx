@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import './styles.css';
+import ProjectTitleController from '../../components/ProjectTitleController';
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function WelcomePage() {
         </button>
       </div>
       <div className="container">
-        HELLO
+        <ProjectTitleController />
       </div>
       <div className="bottom-bar" />
     </div>
