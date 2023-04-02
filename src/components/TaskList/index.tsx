@@ -1,28 +1,14 @@
 import React from 'react';
 import { Task } from '../../types';
-import Input from '../Input';
+import useSessionStorage from '../../hooks/useSessionStorage';
 import './styles.css';
+import NewTaskController from '../NewTaskController';
 
 function TaskList() {
-  const [tasks, setTasks] = React.useState<Array<Task>>([]);
-  const [newTaskTitle, setNewTaskTitle] = React.useState('');
+  const [tasks, setTasks] = useSessionStorage<Array<Task>>('taks', []);
   return (
     <>
-      <Input
-        onSubmit={(e) => {
-          e.preventDefault();
-          setTasks((currTasks) => [
-            {
-              title: newTaskTitle,
-              isCompleted: false,
-              subTasks: [],
-            }, ...currTasks]);
-          setNewTaskTitle('');
-        }}
-        value={newTaskTitle}
-        onChange={(e) => setNewTaskTitle(e.target.value)}
-        label="Create new task"
-      />
+      <NewTaskController setTasks={setTasks} />
       <h4>Tasks</h4>
       {tasks.map(({ title }, idx) => (
         <p key={`${title}-${idx * 10}`}>
