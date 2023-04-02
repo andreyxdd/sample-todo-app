@@ -4,8 +4,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .back-btn {
@@ -19,18 +17,18 @@
   line-height: 20px;
   list-style: none;
   color: white;
-  position: absolute;
-  left: 0;
 }
 
 .top-bar{
   flex: 0.7;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
 }
 
 .container{
+  align-self: center;
   background-color: white;
   border: 2px solid grey;
   border-radius: 10px;
@@ -38,7 +36,31 @@
   padding: 1em;
   flex: 10;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: start;
+  min-height: 0;
+  flex-basis: 0;
+}
+
+.container-item{
+  display: flex;
+  flex-direction: column;
+}
+
+.container-item-list{
+  overflow-y: auto;
+}
+
+.container-item-list::-webkit-scrollbar {
+  width: 0.2em;
+}
+ 
+.container-item-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+}
+ 
+.container-item-list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
 }
 
 .bottom-bar{

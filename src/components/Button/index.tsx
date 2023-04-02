@@ -4,11 +4,13 @@ import './styles.css';
 type Props = {
   children: React.ReactNode;
   onClick?: () => void;
+  type?: 'submit' | 'button';
 }
 
-function Button({ children, onClick }: Props) {
+function Button({ children, onClick, type }: Props) {
   return (
-    <button type="button" onClick={onClick} className="btn">
+    // eslint-disable-next-line react/button-has-type
+    <button type={type} onClick={onClick} className="btn">
       {children}
     </button>
   );
@@ -17,6 +19,7 @@ function Button({ children, onClick }: Props) {
 Button.defaultProps = {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onClick: () => { },
+  type: 'button',
 };
 
 export default Button;

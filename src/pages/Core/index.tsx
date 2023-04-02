@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import './styles.css';
-import ProjectTitleController from '../../components/ProjectTitleController';
+import ProjectTitleController from '../../components/TitleController';
+import TaskList from '../../components/TaskList';
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -29,7 +30,12 @@ function WelcomePage() {
         </button>
       </div>
       <div className="container">
-        <ProjectTitleController />
+        <div className="container-item">
+          <ProjectTitleController />
+        </div>
+        <div className="container-item container-item-list">
+          <TaskList />
+        </div>
       </div>
       <div className="bottom-bar" />
     </div>

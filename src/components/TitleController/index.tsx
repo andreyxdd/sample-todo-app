@@ -2,7 +2,7 @@ import React from 'react';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Input from '../Input';
 
-function ProjectTitleController() {
+function TitleController() {
   const [title, setTitle] = React.useState('Project');
   useDocumentTitle(title);
   return (
@@ -16,4 +16,4 @@ function ProjectTitleController() {
   );
 }
 
-export default ProjectTitleController;
+export default TitleController;
