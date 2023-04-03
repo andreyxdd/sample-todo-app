@@ -9,7 +9,8 @@ function TitleController() {
     <Input
       value={title}
       onChange={(e) => {
-        setTitle(e.target.value);
+        const newTitle = e.target.value;
+        setTitle(newTitle.charAt(0).toUpperCase() + newTitle.slice(1));
       }}
       label="Project Title"
     />

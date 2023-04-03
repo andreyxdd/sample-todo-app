@@ -3,10 +3,10 @@ import Button from '../Button';
 import './styles.css';
 
 type Props = {
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  label: string;
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+  label?: string;
   inputStyle?: React.CSSProperties | undefined;
 }
 
@@ -37,6 +37,7 @@ function Input({
 Input.defaultProps = {
   onSubmit: undefined,
   inputStyle: undefined,
+  label: undefined,
 };
 
 export default Input;

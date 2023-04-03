@@ -14,14 +14,16 @@ function NewTaskController({ setTasks }: Props) {
     <Input
       onSubmit={(e) => {
         e.preventDefault();
-        setTasks((currTasks) => [
-          {
-            id: uuid(),
-            title: newTaskTitle,
-            isCompleted: false,
-            subTasks: [],
-          }, ...currTasks]);
-        setNewTaskTitle('');
+        if (newTaskTitle) {
+          setTasks((currTasks) => [
+            {
+              id: uuid(),
+              title: newTaskTitle.charAt(0).toUpperCase() + newTaskTitle.slice(1),
+              isCompleted: false,
+              subTasks: [],
+            }, ...currTasks]);
+          setNewTaskTitle('');
+        }
       }}
       value={newTaskTitle}
       onChange={(e) => setNewTaskTitle(e.target.value)}

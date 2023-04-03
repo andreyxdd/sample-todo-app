@@ -3,6 +3,7 @@
   border-width: 0 0 1px;
   border-color: #D3D3D3;
   margin-left: 1em;
+  text-transform: capitalize;
 }
 
 .input:focus {
