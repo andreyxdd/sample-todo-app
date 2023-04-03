@@ -2,10 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 0.2em;
   margin-top: 0.2em;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
 }
 
 .task-container-row {
@@ -13,6 +10,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  border-radius: 5px;
 }
 
 .check-container{
@@ -21,12 +19,14 @@
   padding-left: 6px;
 }
 
-.subtasks-container {
+.subtask-list-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin-left: 20px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
+}
+
+.subtask-container{
+  width: 100%;
 }

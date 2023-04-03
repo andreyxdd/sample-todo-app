@@ -6,6 +6,7 @@ import { setTaskProps, Task as TaskProps } from '../../types';
 import Button from '../Button';
 import Input from '../Input';
 import './styles.css';
+import useDraggableList from '../../hooks/useDraggableList';
 
 type Props = TaskProps & {
   setTasks: (v: setTaskProps) => void;
@@ -54,42 +55,16 @@ function Task({
     setTasks((currTasks) => currTasks.filter((t) => t.id !== id));
   };
 
-  const dragItem = React.useRef<number>();
-  const dragOverItem = React.useRef<number>();
-
-  const dragStart = (e: React.DragEvent<HTMLDivElement>, dragIdx: number) => {
-    dragItem.current = dragIdx;
-  };
-
-  const dragEnter = (e: React.DragEvent<HTMLDivElement>, dragIdx: number) => {
-    dragOverItem.current = dragIdx;
-  };
-  const drop = () => {
-    if (
-      typeof dragItem.current === 'number'
-      && typeof dragOverItem.current === 'number'
-      && dragItem.current !== dragOverItem.current
-    ) {
-      const newTasks = subTasks.filter((val, idx) => idx !== dragItem.current);
-      const dragItemContent = subTasks[dragItem.current];
-      newTasks.splice(dragOverItem.current, 0, dragItemContent);
-      dragItem.current = undefined;
-      dragOverItem.current = undefined;
-      setSubTasks(newTasks);
-    }
-  };
+  const { dragStart, dragEnter, drop } = useDraggableList(subTasks, setSubTasks);
 
   return (
-    <div
-      className="task-container-col"
-      draggable
-    >
+    <div className="task-container-col">
       <div
         className="task-container-row"
         style={{ backgroundColor }}
       >
-        <RxDotsVertical />
         <div className="task-container-row">
+          <RxDotsVertical />
           <label htmlFor={`task-${title}-${id}-check`} className="check-container">
             <input
               type="checkbox"
@@ -109,7 +84,8 @@ function Task({
             onSubmit={addSubtask}
             value={subTaskTitle}
             onChange={(e) => setSubTaskTitle(e.target.value)}
-            label="Add a sub-task"
+            label="New subtask"
+            btnLabel="Add subtask"
             inputStyle={{ backgroundColor }}
           />
           <Button onClick={removeTask}>
@@ -119,13 +95,15 @@ function Task({
       </div>
       {subTasks && subTasks.length > 0
         && (
-        <div className="subtasks-container">
+        <div className="subtask-list-container">
           {subTasks.map((st: TaskProps, stIndex) => (
             <div
               key={`task-${st.title}-${st.id}`}
               onDragStart={(e) => dragStart(e, stIndex)}
               onDragEnter={(e) => dragEnter(e, stIndex)}
               onDragEnd={drop}
+              draggable
+              className="subtask-container"
             >
               <Task
                 id={st.id}

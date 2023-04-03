@@ -3,17 +3,20 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Input from '../Input';
 
 function TitleController() {
-  const [title, setTitle] = React.useState('Project');
+  const [title, setTitle] = React.useState('TODO List Project');
   useDocumentTitle(title);
   return (
-    <Input
-      value={title}
-      onChange={(e) => {
-        const newTitle = e.target.value;
-        setTitle(newTitle.charAt(0).toUpperCase() + newTitle.slice(1));
-      }}
-      label="Project Title"
-    />
+    <div style={{ paddingTop: '1em', paddingBottom: '1em' }}>
+      <Input
+        value={title}
+        onChange={(e) => {
+          const newTitle = e.target.value;
+          setTitle(newTitle.charAt(0).toUpperCase() + newTitle.slice(1));
+        }}
+        label="Project title"
+        inputStyle={{ fontWeight: 'bold' }}
+      />
+    </div>
   );
 }
 

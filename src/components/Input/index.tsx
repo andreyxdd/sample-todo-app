@@ -7,27 +7,28 @@ type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   label?: string;
+  btnLabel?: string;
   inputStyle?: React.CSSProperties | undefined;
 }
 
 function Input({
-  onSubmit, value, onChange, label, inputStyle,
+  onSubmit, value, onChange, label, btnLabel = label, inputStyle,
 }: Props) {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="input-form-container">
       <label htmlFor="project-title" className="label">
-        {label}
         <input
           id="project-title"
           className="input"
           value={value}
           onChange={onChange}
           style={inputStyle}
+          placeholder={label}
         />
       </label>
       {onSubmit ? (
         <Button type="submit">
-          {label}
+          {btnLabel}
         </Button>
       ) : null}
     </form>
@@ -38,6 +39,7 @@ Input.defaultProps = {
   onSubmit: undefined,
   inputStyle: undefined,
   label: undefined,
+  btnLabel: undefined,
 };
 
 export default Input;

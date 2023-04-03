@@ -26,8 +26,12 @@ function NewTaskController({ setTasks }: Props) {
         }
       }}
       value={newTaskTitle}
-      onChange={(e) => setNewTaskTitle(e.target.value)}
-      label="Add a task"
+      onChange={(e) => {
+        const inputValue = e.target.value;
+        setNewTaskTitle(inputValue.charAt(0).toUpperCase() + inputValue.slice(1));
+      }}
+      label="New task"
+      btnLabel="Add a task"
     />
   );
 }
