@@ -1,9 +1,10 @@
 import React from 'react';
-import { Task } from '../../types';
+import { v4 as uuid } from 'uuid';
+import { setTaskProps } from '../../types';
 import Input from '../Input';
 
 type Props = {
-  setTasks: (value: Array<Task> | ((val: Array<Task>) => Array<Task>)) => void;
+  setTasks: (v: setTaskProps) => void;
 }
 
 function NewTaskController({ setTasks }: Props) {
@@ -15,6 +16,7 @@ function NewTaskController({ setTasks }: Props) {
         e.preventDefault();
         setTasks((currTasks) => [
           {
+            id: uuid(),
             title: newTaskTitle,
             isCompleted: false,
             subTasks: [],
@@ -23,7 +25,7 @@ function NewTaskController({ setTasks }: Props) {
       }}
       value={newTaskTitle}
       onChange={(e) => setNewTaskTitle(e.target.value)}
-      label="Create new task"
+      label="Add a task"
     />
   );
 }

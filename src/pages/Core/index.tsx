@@ -30,12 +30,8 @@ function WelcomePage() {
         </button>
       </div>
       <div className="container">
-        <div className="container-item">
-          <ProjectTitleController />
-        </div>
-        <div className="container-item container-item-list">
-          <TaskList />
-        </div>
+        <ProjectTitleController />
+        <TaskList />
       </div>
       <div className="bottom-bar" />
     </div>

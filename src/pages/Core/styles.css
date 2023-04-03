@@ -42,27 +42,6 @@
   flex-basis: 0;
 }
 
-.container-item{
-  display: flex;
-  flex-direction: column;
-}
-
-.container-item-list{
-  overflow-y: auto;
-}
-
-.container-item-list::-webkit-scrollbar {
-  width: 0.2em;
-}
- 
-.container-item-list::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-}
- 
-.container-item-list::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-}
-
 .bottom-bar{
   flex: 0.7;
 }

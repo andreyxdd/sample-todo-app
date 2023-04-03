@@ -7,10 +7,11 @@ type Props = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
+  inputStyle?: React.CSSProperties | undefined;
 }
 
 function Input({
-  onSubmit, value, onChange, label,
+  onSubmit, value, onChange, label, inputStyle,
 }: Props) {
   return (
     <form onSubmit={onSubmit}>
@@ -21,11 +22,12 @@ function Input({
           className="input"
           value={value}
           onChange={onChange}
+          style={inputStyle}
         />
       </label>
       {onSubmit ? (
         <Button type="submit">
-          Create a task
+          {label}
         </Button>
       ) : null}
     </form>
@@ -34,6 +36,7 @@ function Input({
 
 Input.defaultProps = {
   onSubmit: undefined,
+  inputStyle: undefined,
 };
 
 export default Input;
