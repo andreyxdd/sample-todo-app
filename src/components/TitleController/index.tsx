@@ -3,7 +3,7 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Input from '../Input';
 
 function TitleController() {
-  const [title, setTitle] = React.useState('TODO List Project');
+  const [title, setTitle] = React.useState('Recursive TODO List');
   useDocumentTitle(title);
   return (
     <div style={{ paddingTop: '1em', paddingBottom: '1em' }}>

@@ -15,7 +15,7 @@ function WelcomePage() {
         <p>
           You are looking at the
           {' '}
-          <b>TODO App</b>
+          <b>Recursive TODO List App</b>
           {' '}
           — a take-home SPA React project.
           <br />
@@ -25,7 +25,7 @@ function WelcomePage() {
           <Button onClick={() => navigate('core')}>
             Continue to the app
           </Button>
-          <a href="https://github.com/andreyxdd" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/andreyxdd/sample-todo-app" target="_blank" rel="noopener noreferrer">
             <Button>
               <span>See source code</span>
               <FaGithub

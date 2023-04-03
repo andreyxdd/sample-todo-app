@@ -11,7 +11,7 @@ import useDraggableList from '../../hooks/useDraggableList';
 function TaskList() {
   const [tasks, setTasks, clearStorage] = useSessionStorage<Array<TaskProps>>('taks', []);
 
-  const [searchString, setSearchString] = React.useState('');
+  const [searchString, setSearchString] = useSessionStorage('serach-string', '');
   const [filteredTasks, setFilteredTasks] = React.useState<Array<TaskProps>>([]);
   React.useEffect(() => {
     const filterResults = tasks.filter(

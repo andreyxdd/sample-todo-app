@@ -61,7 +61,7 @@ function Task({
     <div className="task-container-col">
       <div
         className="task-container-row"
-        style={{ backgroundColor }}
+        style={{ backgroundColor, cursor: 'grab', paddingLeft: '1em' }}
       >
         <div className="task-container-row">
           <RxDotsVertical />
