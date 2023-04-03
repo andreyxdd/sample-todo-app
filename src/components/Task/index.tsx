@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
+import { RxDotsVertical } from 'react-icons/rx';
 import useSessionStorage from '../../hooks/useSessionStorage';
 import { setTaskProps, Task as TaskProps } from '../../types';
 import Button from '../Button';
@@ -53,12 +54,41 @@ function Task({
     setTasks((currTasks) => currTasks.filter((t) => t.id !== id));
   };
 
+  const dragItem = React.useRef<number>();
+  const dragOverItem = React.useRef<number>();
+
+  const dragStart = (e: React.DragEvent<HTMLDivElement>, dragIdx: number) => {
+    dragItem.current = dragIdx;
+  };
+
+  const dragEnter = (e: React.DragEvent<HTMLDivElement>, dragIdx: number) => {
+    dragOverItem.current = dragIdx;
+  };
+  const drop = () => {
+    if (
+      typeof dragItem.current === 'number'
+      && typeof dragOverItem.current === 'number'
+      && dragItem.current !== dragOverItem.current
+    ) {
+      const newTasks = subTasks.filter((val, idx) => idx !== dragItem.current);
+      const dragItemContent = subTasks[dragItem.current];
+      newTasks.splice(dragOverItem.current, 0, dragItemContent);
+      dragItem.current = undefined;
+      dragOverItem.current = undefined;
+      setSubTasks(newTasks);
+    }
+  };
+
   return (
-    <div className="task-container-col">
+    <div
+      className="task-container-col"
+      draggable
+    >
       <div
         className="task-container-row"
         style={{ backgroundColor }}
       >
+        <RxDotsVertical />
         <div className="task-container-row">
           <label htmlFor={`task-${title}-${id}-check`} className="check-container">
             <input
@@ -90,15 +120,21 @@ function Task({
       {subTasks && subTasks.length > 0
         && (
         <div className="subtasks-container">
-          {subTasks.map((st: TaskProps) => (
-            <Task
+          {subTasks.map((st: TaskProps, stIndex) => (
+            <div
               key={`task-${st.title}-${st.id}`}
-              id={st.id}
-              title={st.title}
-              isCompleted={st.isCompleted}
-              subTasks={st.subTasks}
-              setTasks={setSubTasks}
-            />
+              onDragStart={(e) => dragStart(e, stIndex)}
+              onDragEnter={(e) => dragEnter(e, stIndex)}
+              onDragEnd={drop}
+            >
+              <Task
+                id={st.id}
+                title={st.title}
+                isCompleted={st.isCompleted}
+                setTasks={setSubTasks}
+                subTasks={st.subTasks}
+              />
+            </div>
           ))}
         </div>
         )}

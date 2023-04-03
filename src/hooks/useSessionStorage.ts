@@ -27,7 +27,13 @@ function useSessionStorage<T>(key: string, initialValue: T) {
     }
   };
 
-  return [sessionValue, setter] as const;
+  const clearStorage = () => {
+    if (window) {
+      window.sessionStorage.clear();
+    }
+  };
+
+  return [sessionValue, setter, clearStorage] as const;
 }
 
 export default useSessionStorage;
